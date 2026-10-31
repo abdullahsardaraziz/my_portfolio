@@ -14,3 +14,22 @@ if (timeline && !reduceMotion) {
   window.addEventListener("scroll", updateRoad, { passive: true });
   window.addEventListener("resize", updateRoad);
 }
+
+// Light / dark switch. The page already picked a theme in <head> (saved choice, else the device setting).
+const toggle = document.querySelector(".theme-toggle");
+
+function showToggleLabel() {
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  toggle.textContent = isDark ? "Light mode" : "Dark mode";
+  toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+}
+
+if (toggle) {
+  showToggleLabel();
+  toggle.addEventListener("click", function () {
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    showToggleLabel();
+  });
+}

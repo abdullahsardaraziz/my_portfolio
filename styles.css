@@ -1,10 +1,24 @@
 :root {
-  --navy: #14233f;
   --paper: #fafbfd;
   --slate: #44506a;
+  --heading: #14233f;
+  --band: #14233f;
+  --dot: #14233f;
   --tangerine: #f26b1d;
   --tangerine-text: #b8470a;
   --mist: #e4e9f1;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #0b1220;
+  --slate: #b3bdcf;
+  --heading: #f2f5fa;
+  --band: #14233f;
+  --dot: #dfe6f2;
+  --tangerine-text: #ff9a5c;
+  --mist: #26324a;
+  color-scheme: dark;
 }
 
 * {
@@ -23,13 +37,13 @@ body {
 h1,
 h2,
 h3 {
-  color: var(--navy);
+  color: var(--heading);
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   line-height: 1.15;
 }
 
 a {
-  color: var(--navy);
+  color: var(--heading);
   text-decoration-color: var(--tangerine);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
@@ -49,7 +63,7 @@ a:focus-visible {
   justify-content: center;
   gap: 40px;
   padding: 72px 24px;
-  background: var(--navy);
+  background: var(--band);
 }
 
 .intro-text {
@@ -65,7 +79,7 @@ a:focus-visible {
 
 .intro-title {
   margin: 0;
-  color: var(--mist);
+  color: #e4e9f1;
   font-size: 1.375rem;
 }
 
@@ -123,9 +137,9 @@ a:focus-visible {
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 3px;
+  width: 4px;
   background: var(--mist);
-  transform: translateX(-1.5px);
+  transform: translateX(-2px);
 }
 
 .timeline::after {
@@ -133,10 +147,10 @@ a:focus-visible {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 3px;
+  width: 4px;
   height: var(--fill, 100%);
   background: var(--tangerine);
-  transform: translateX(-1.5px);
+  transform: translateX(-2px);
 }
 
 .stop {
@@ -160,7 +174,8 @@ a:focus-visible {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--navy);
+  background: var(--dot);
+  z-index: 1;
   box-shadow: 0 0 0 5px var(--paper);
 }
 
@@ -183,7 +198,7 @@ a:focus-visible {
 
 .stop-place {
   margin: 0 0 8px;
-  color: var(--navy);
+  color: var(--heading);
   font-weight: 600;
 }
 
@@ -227,7 +242,7 @@ a:focus-visible {
   padding: 12px 28px;
   border-radius: 6px;
   background: var(--tangerine);
-  color: var(--navy);
+  color: #14233f;
   font-weight: 700;
   text-decoration: none;
   transition: background 0.2s ease;
@@ -271,7 +286,7 @@ a:focus-visible {
 
   .timeline::before,
   .timeline::after {
-    left: 8px;
+    left: 7px;
     transform: none;
   }
 
@@ -288,4 +303,41 @@ a:focus-visible {
     left: 0;
     right: auto;
   }
+}
+
+/* ---------- Dark mode switch ---------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(20, 35, 63, 0.85);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--tangerine);
+  color: #14233f;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--tangerine);
+  outline-offset: 3px;
+}
+
+body,
+.about,
+.roadmap,
+.contact {
+  transition: background 0.3s ease, color 0.3s ease;
 }
