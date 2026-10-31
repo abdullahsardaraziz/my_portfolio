@@ -343,7 +343,7 @@ body,
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
   margin: 0 0 40px;
   text-align: left;
@@ -406,4 +406,9 @@ body,
   color: var(--heading);
   font-weight: 600;
   overflow-wrap: anywhere;
+}
+
+.contact-grid {
+  max-width: 520px;
+  margin: 0 auto 40px;
 }
