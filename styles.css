@@ -412,3 +412,26 @@ body,
   max-width: 520px;
   margin: 0 auto 40px;
 }
+
+/* ---------- Contact cards in a row, CV button in the top band ---------- */
+
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: none;
+  margin: 0 0 48px;
+}
+
+.contact-item {
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.contact-value {
+  font-size: 0.95rem;
+}
+
+.cv-button-top {
+  margin-top: 28px;
+}
