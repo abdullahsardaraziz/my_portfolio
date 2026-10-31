@@ -1,6 +1,5 @@
 // The orange road fills in as the visitor scrolls down the timeline.
 const timeline = document.querySelector(".timeline");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function updateRoad() {
   const box = timeline.getBoundingClientRect();
@@ -9,7 +8,7 @@ function updateRoad() {
   timeline.style.setProperty("--fill", fill + "px");
 }
 
-if (timeline && !reduceMotion) {
+if (timeline) {
   updateRoad();
   window.addEventListener("scroll", updateRoad, { passive: true });
   window.addEventListener("resize", updateRoad);
